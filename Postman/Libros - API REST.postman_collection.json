@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "0ac8abce-8553-42d8-ae66-8169163b9c22",
+		"name": "Libros - API REST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "add_libro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Manual de Uso de BlackBox AI\",\r\n    \"autor\": \"Gomez Ramon\",\r\n    \"categoria\": \"Inteligencia Artificial\",\r\n    \"año-publicacion\": 2024,\r\n    \"ISBN\":\"0988627151479\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/libro",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"libro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_all_libros",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "update_libro",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"id\": 2,\r\n        \"nombre\": \"Probabilidad y Estadisticas\",\r\n        \"autor\": \"Devoree, Jay L.\",\r\n        \"categoria\": \"Matemáticas\",\r\n        \"año-publicacion\": 2018,\r\n        \"ISBN\": \"0978607526659\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/libro",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"libro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete_libro",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ISBN\": \"1088627151469\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/libro",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"libro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_un_libro",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/unlibro3",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"unlibro3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

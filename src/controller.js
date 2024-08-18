@@ -1,6 +1,23 @@
 import {pool} from './database.js'; //usamos pool para poder manejar varias conexiones de forma paralela
 
 class LibroController{
+
+
+  async getOne(req, res) {
+    try {
+      const libroId = req.params.id;
+      const [result] = await pool.query(`SELECT * FROM Libros WHERE id=(?)`, [libroId]);
+      console.log(result); // Imprime el resultado de la consulta
+      if (result.length > 0) {
+        res.json({ libro: result[0] }); // Devuelve los datos del libro
+      } else {
+        res.status(404).json({ message: 'Libro no encontrado' }); // Devuelve un mensaje de error si no se encuentra el libro
+      }
+    } catch (error) {
+      console.error(error); // Imprime el error en la consola
+      res.status(500).json({ message: 'La base de datos esta desconectada. Contacte con el Administrador' }); // Devuelve un mensaje de error genérico
+    }
+  }
     //async await permite al servidor trabajar de forma paralela varias solicitudes y no monopolice recursos durante la ejecucion
     async getAll(req, res){ //req es la solicitud del cliente, res es la respuesta que vamos a dar
         try {
@@ -75,7 +92,7 @@ class LibroController{
           }
       
           // Verificar que el ISBN exista en la base de datos
-          const [exist] = await pool.query("SELECT 1 FROM Libros WHERE ISBN = ?", [libro.ISBN]);
+          const [exist] = await pool.query("SELECT 1 FROM Libros WHERE ISBN = (?)", [libro.ISBN]);
           if (!exist) {
             return res.status(404).json({ message: 'El ISBN no existe' });
           }
@@ -91,36 +108,3 @@ class LibroController{
 }
 
 export const libro = new LibroController();
-
-/*import {pool} from './database.js'; //usamos pool para poder manejar varias conexiones de forma paralela
-
-class LibroController{
-    //async await permite al servidor trabajar de forma paralela varias solicitudes y no monopolice recursos durante la ejecucion
-    async getAll(req, res){ //req es la solicitud del cliente, res es la respuesta que vamos a dar
-        const [result] = await pool.query('SELECT * FROM libros'); //query espera como argumento scripts SQL
-        res.json(result);
-        //el corchete es para que solo muestre el array de datos y no los de info sobre la operacion
-    }
-
-    async add(req, res){
-        const libro = req.body;
-        const [result] = await pool.query("INSERT INTO Libros(nombre, autor, categoria, `año-publicacion`, ISBN) VALUES (?, ?, ?, ?, ?)", [libro.nombre, libro.autor, libro.categoria, libro['año-publicacion'], libro.ISBN]);
-        res.json({"Id insertado": result.insertId, "Libro insertado": libro.nombre});
-    }
-
-    async update(req, res){
-        const libro = req.body;
-        const [result] = await pool.query("UPDATE Libros SET nombre=(?), autor=(?), categoria=(?), `año-publicacion`=(?), ISBN=(?) WHERE id=(?)", [libro.nombre, libro.autor, libro.categoria, libro['año-publicacion'], libro.ISBN, libro.id]);
-        res.json({"Libros actualizados": result.changedRows});
-    }
-
-    async delete(req, res){
-        const libro = req.body;
-        const [result] = await pool.query(`DELETE FROM Libros WHERE ISBN=(?)`, [libro.ISBN]);
-        res.json({"Registros eliminados": result.affectedRows,"ISBN eliminado": libro.ISBN});
-    }
-
-}
-
-export const libro = new LibroController();
-*/

@@ -1,0 +1,108 @@
+{
+	"info": {
+		"_postman_id": "8112e26d-8ed9-4f5f-b5a8-85ef10a5e11f",
+		"name": "(errores )Libros - API REST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "(error)add_libro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Algoritmos y Estructuras de Datos\",\r\n    \"autor\": \"Pedro Sanchez\",\r\n    \"año-publicacion\": 2030,\r\n    \"ISBN\":\"1088627151469\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/libro",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"libro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(error)update_libro",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"id\": 2,\r\n        \"nombre\": \"Probabilidad y Estadisticas\",\r\n        \"autor\": \"Devoree, Jay L.\",\r\n        \"categoria\": \"Matematicas\",\r\n        \"año-publicacion\": 20188,\r\n        \"ISBN\": \"0978607526659\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/libro",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"libro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(error)delete_libro",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ISBN\": \"abcdlkjfropef\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/libro",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"libro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "(error)get_un_libro",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/unlibro25",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"unlibro25"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

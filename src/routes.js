@@ -7,3 +7,4 @@ router.get('/libros', libro.getAll); //cuando el usuario entre a la pagina raiz 
 router.post('/libro', libro.add);
 router.delete('/libro', libro.delete);
 router.put('/libro', libro.update);
+router.get('/unlibro:id', libro.getOne);
